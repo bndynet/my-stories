@@ -5,19 +5,28 @@ import {
   Position,
   LegendItemContext,
   Icon,
+  PieChartData,
 } from '@bndynet/icharts';
 import { pieData, pieDataLarge, pieDataSmall } from './pie.data';
-import { createStory, meta } from './utils';
+import { createStory, meta, StoryInputs } from './utils';
 
-export default {...meta, title: 'example/icharts/Pie', args: {
-  type: 'pie',
-}};
+export default {
+  ...meta,
+  title: 'My Stories/icharts/Pie',
+  args: {
+    type: 'pie',
+  },
+};
 
-export const Default = createStory<PieChartOptions>({
+function cs(args: StoryInputs<PieChartData, PieChartOptions>) {
+  return createStory<PieChartData, PieChartOptions>(args);
+}
+
+export const Default = cs({
   data: pieData,
 });
 
-export const Donut = createStory({
+export const Donut = cs({
   data: pieData,
   options: {
     variant: PieVariant.Doughnut,
@@ -27,28 +36,28 @@ export const Donut = createStory({
   },
 });
 
-export const Half = createStory({
+export const Half = cs({
   data: pieData,
   options: {
     variant: PieVariant.HalfDonut,
   },
 });
 
-export const NightingaleRose = createStory({
+export const NightingaleRose = cs({
   data: pieData,
   options: {
     variant: PieVariant.NightingaleRose,
   },
 });
 
-export const Nest = createStory({
+export const Nest = cs({
   options: {
     series: [{ name: '2020' }, { name: '2021' }],
   },
   data: [pieData, pieDataSmall],
 });
 
-export const Tooltip = createStory({
+export const Tooltip = cs({
   data: pieData,
   options: {
     tooltip: {
@@ -56,8 +65,8 @@ export const Tooltip = createStory({
     },
     callbacks: {
       tooltip: {
-        formatValue: (v: number) => `$${v}`,
-        getContent: (p:any, ticket: any, callback: any) => {
+        formatValue: (v: number | string) => `$${v}`,
+        getContent: (p: any, ticket: any, callback: any) => {
           setTimeout(() => {
             callback(
               ticket,
@@ -71,7 +80,7 @@ export const Tooltip = createStory({
   },
 });
 
-export const Legend = createStory({
+export const Legend = cs({
   options: {
     legend: {
       show: true,
@@ -140,8 +149,9 @@ export const Legend = createStory({
   data: [pieDataSmall, pieData],
 });
 
-export const Dark = createStory({
+export const Dark = cs({
   options: {
+    // backgroundColor: 'rgba(0,0,0,1)',
     colors: [
       '#19D0CD',
       '#DE196B',

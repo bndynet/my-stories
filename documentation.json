@@ -1,31 +1,6 @@
 {
     "pipes": [],
-    "interfaces": [
-        {
-            "name": "User",
-            "id": "interface-User-d4821beac0e4a852e513391b7470981c4353fdd95a18628bb68136c8695b489ee15b926e2e5031bc26cf30e1508e0a362c3ee13a06734702b4d15af140e485d5",
-            "file": "src/stories/user.ts",
-            "deprecated": false,
-            "deprecationMessage": "",
-            "type": "interface",
-            "sourceCode": "export interface User {\n  name: string;\n}\n",
-            "properties": [
-                {
-                    "name": "name",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "optional": false,
-                    "description": "",
-                    "line": 2
-                }
-            ],
-            "indexSignatures": [],
-            "kind": 171,
-            "methods": [],
-            "extends": []
-        }
-    ],
+    "interfaces": [],
     "injectables": [],
     "guards": [],
     "interceptors": [],
@@ -83,141 +58,8 @@
             "extends": []
         },
         {
-            "name": "ButtonComponent",
-            "id": "component-ButtonComponent-86e2311c54fbca7431c12e070d0fd5b0ebe343eec0553a392f182ba0e04a8f86613233d26ee47718fd0e7a65078f580c76a1fcc928ce55de81193d6618025bc4",
-            "file": "src/stories/button.component.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "storybook-button",
-            "styleUrls": [
-                "./button.css"
-            ],
-            "styles": [],
-            "template": "<button   type=\"button\"\n   (click)=\"onClick.emit($event)\"\n   [ngClass]=\"classes\"\n   [ngStyle]=\"{ 'background-color': backgroundColor }\"\n >\n   {{ label }}\n </button>",
-            "templateUrl": [],
-            "viewProviders": [],
-            "hostDirectives": [],
-            "inputsClass": [
-                {
-                    "name": "backgroundColor",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n\nWhat background color to use\n",
-                    "description": "<p>What background color to use</p>\n",
-                    "line": 29,
-                    "type": "string",
-                    "decorators": []
-                },
-                {
-                    "name": "label",
-                    "defaultValue": "'Button'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "jsdoctags": [
-                        {
-                            "pos": 798,
-                            "end": 811,
-                            "flags": 16842752,
-                            "modifierFlagsCache": 0,
-                            "transformFlags": 0,
-                            "kind": 334,
-                            "tagName": {
-                                "pos": 799,
-                                "end": 807,
-                                "flags": 16842752,
-                                "modifierFlagsCache": 0,
-                                "transformFlags": 0,
-                                "kind": 80,
-                                "escapedText": "required"
-                            },
-                            "comment": ""
-                        }
-                    ],
-                    "rawdescription": "\n\nButton contents\n\n",
-                    "description": "<p>Button contents</p>\n",
-                    "line": 43,
-                    "type": "string",
-                    "decorators": []
-                },
-                {
-                    "name": "primary",
-                    "defaultValue": "false",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n\nIs this the principal call to action on the page?\n",
-                    "description": "<p>Is this the principal call to action on the page?</p>\n",
-                    "line": 23,
-                    "type": "boolean",
-                    "decorators": []
-                },
-                {
-                    "name": "size",
-                    "defaultValue": "'medium'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n\nHow large should the button be?\n",
-                    "description": "<p>How large should the button be?</p>\n",
-                    "line": 35,
-                    "type": "\"small\" | \"medium\" | \"large\"",
-                    "decorators": []
-                }
-            ],
-            "outputsClass": [
-                {
-                    "name": "onClick",
-                    "defaultValue": "new EventEmitter<Event>()",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n\nOptional click handler\n",
-                    "description": "<p>Optional click handler</p>\n",
-                    "line": 49,
-                    "type": "EventEmitter"
-                }
-            ],
-            "propertiesClass": [],
-            "methodsClass": [],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "standalone": true,
-            "imports": [
-                {
-                    "name": "CommonModule",
-                    "type": "module"
-                }
-            ],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, Input, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'storybook-button',\n  standalone: true,\n  imports: [CommonModule],\n  template: ` <button\n    type=\"button\"\n    (click)=\"onClick.emit($event)\"\n    [ngClass]=\"classes\"\n    [ngStyle]=\"{ 'background-color': backgroundColor }\"\n  >\n    {{ label }}\n  </button>`,\n  styleUrls: ['./button.css'],\n})\nexport class ButtonComponent {\n  /**\n   * Is this the principal call to action on the page?\n   */\n  @Input()\n  primary = false;\n\n  /**\n   * What background color to use\n   */\n  @Input()\n  backgroundColor?: string;\n\n  /**\n   * How large should the button be?\n   */\n  @Input()\n  size: 'small' | 'medium' | 'large' = 'medium';\n\n  /**\n   * Button contents\n   *\n   * @required\n   */\n  @Input()\n  label = 'Button';\n\n  /**\n   * Optional click handler\n   */\n  @Output()\n  onClick = new EventEmitter<Event>();\n\n  public get classes(): string[] {\n    const mode = this.primary ? 'storybook-button--primary' : 'storybook-button--secondary';\n\n    return ['storybook-button', `storybook-button--${this.size}`, mode];\n  }\n}\n",
-            "assetsDirs": [],
-            "styleUrlsData": [
-                {
-                    "data": ".storybook-button {\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  font-weight: 700;\n  border: 0;\n  border-radius: 3em;\n  cursor: pointer;\n  display: inline-block;\n  line-height: 1;\n}\n.storybook-button--primary {\n  color: white;\n  background-color: #1ea7fd;\n}\n.storybook-button--secondary {\n  color: #333;\n  background-color: transparent;\n  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;\n}\n.storybook-button--small {\n  font-size: 12px;\n  padding: 10px 16px;\n}\n.storybook-button--medium {\n  font-size: 14px;\n  padding: 11px 20px;\n}\n.storybook-button--large {\n  font-size: 16px;\n  padding: 12px 24px;\n}\n",
-                    "styleUrl": "./button.css"
-                }
-            ],
-            "stylesData": "",
-            "extends": [],
-            "accessors": {
-                "classes": {
-                    "name": "classes",
-                    "getSignature": {
-                        "name": "classes",
-                        "type": "[]",
-                        "returnType": "string[]",
-                        "line": 51
-                    }
-                }
-            }
-        },
-        {
             "name": "ChartComponent",
-            "id": "component-ChartComponent-d81fb0b871343c2d8e3301819e1773e62b64c672fdf1117fa19ef5a982dfa54d3bc39384ed8d734da501d61f5d482a5de254e32e612f791d67b25595fab09427",
+            "id": "component-ChartComponent-9b2c909bacc4adb49993f664acafdab6b189a95b55c1a6cc8af1eb3a218bbcc9a0822891d9d3c06175665e7bd757e63bd083119f48ac4b062840c68e578c94ef",
             "file": "src/stories/icharts/chart.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -226,8 +68,10 @@
             "providers": [],
             "selector": "storybook-ichart",
             "styleUrls": [],
-            "styles": [],
-            "template": "<div    #container\n    [style.width]=\"this.size?.width || '100%'\"\n    [style.height]=\"this.size?.height || '300px'\"\n  ></div>",
+            "styles": [
+                "\n      :host {\n        display: flex;\n        justify-content: center;\n      }\n    "
+            ],
+            "template": "<div #container [ngStyle]=\"this.containerStyles\"></div>",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
@@ -236,15 +80,15 @@
                     "name": "data",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 33,
-                    "type": "object",
+                    "line": 37,
+                    "type": "any",
                     "decorators": []
                 },
                 {
                     "name": "isDark",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 39,
+                    "line": 43,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -252,7 +96,7 @@
                     "name": "options",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 30,
+                    "line": 34,
                     "type": "ChartOptions<any>",
                     "decorators": []
                 },
@@ -260,15 +104,23 @@
                     "name": "size",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 42,
+                    "line": 46,
                     "type": "literal type",
+                    "decorators": []
+                },
+                {
+                    "name": "styles",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 52,
+                    "type": "object",
                     "decorators": []
                 },
                 {
                     "name": "type",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 36,
+                    "line": 40,
                     "type": "string",
                     "decorators": []
                 }
@@ -276,13 +128,25 @@
             "outputsClass": [],
             "propertiesClass": [
                 {
-                    "name": "chart",
+                    "name": "_chart",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Chart",
                     "optional": true,
                     "description": "",
-                    "line": 44,
+                    "line": 66,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "_viewInit",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "optional": true,
+                    "description": "",
+                    "line": 67,
                     "modifierKind": [
                         123
                     ]
@@ -294,7 +158,7 @@
                     "type": "ElementRef<HTMLDivElement>",
                     "optional": false,
                     "description": "",
-                    "line": 27,
+                    "line": 31,
                     "decorators": [
                         {
                             "name": "ViewChild",
@@ -305,28 +169,29 @@
                         170,
                         123
                     ]
-                },
-                {
-                    "name": "viewInit",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "boolean",
-                    "optional": true,
-                    "description": "",
-                    "line": 45,
-                    "modifierKind": [
-                        123
-                    ]
                 }
             ],
             "methodsClass": [
+                {
+                    "name": "_render",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 80,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ]
+                },
                 {
                     "name": "ngAfterViewInit",
                     "args": [],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 53,
+                    "line": 75,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -343,7 +208,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 47,
+                    "line": 69,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -357,19 +222,6 @@
                             }
                         }
                     ]
-                },
-                {
-                    "name": "render",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 58,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "modifierKind": [
-                        123
-                    ]
                 }
             ],
             "deprecated": false,
@@ -386,162 +238,74 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { chart, ChartOptions, ChartType } from '@bndynet/icharts';\nimport { CommonModule } from '@angular/common';\nimport {\n  Component,\n  ViewChild,\n  ElementRef,\n  AfterViewInit,\n  Input,\n  OnChanges,\n  SimpleChanges,\n} from '@angular/core';\nimport { merge } from 'lodash-es';\nimport { Chart } from '@bndynet/icharts/dist/types/scripts/core/chart';\n\n@Component({\n  selector: 'storybook-ichart',\n  standalone: true,\n  imports: [CommonModule],\n  template: `<div\n    #container\n    [style.width]=\"this.size?.width || '100%'\"\n    [style.height]=\"this.size?.height || '300px'\"\n  ></div>`,\n})\nexport class ChartComponent implements AfterViewInit, OnChanges {\n  @ViewChild('container')\n  private containerRef!: ElementRef<HTMLDivElement>;\n\n  @Input()\n  options?: ChartOptions<any>;\n\n  @Input()\n  data?: object;\n\n  @Input()\n  type?: string;\n\n  @Input()\n  isDark?: boolean;\n\n  @Input()\n  size?: { width?: number | string; height?: number | string };\n\n  private chart?: Chart;\n  private viewInit?: boolean;\n\n  ngOnChanges(changes: SimpleChanges): void {\n    if (this.viewInit) {\n      this.render();\n    }\n  }\n\n  ngAfterViewInit(): void {\n    this.render();\n    this.viewInit = true;\n  }\n\n  private render(): void {\n    console.log(`🚀 ~ IChartsPieComponent ~ render ~ render: @input`, this.type, this.data, this.options);\n    if (this.chart) {\n      this.chart.dispose();\n    }\n\n    this.chart = chart(\n      this.containerRef.nativeElement,\n      this.type as ChartType,\n      this.data,\n      merge(\n        this.options,\n        {\n          theme: this.isDark ? 'dark' : undefined,\n        },\n      )\n    );\n  }\n}\n",
+            "sourceCode": "import { chart, ChartOptions, ChartType } from '@bndynet/icharts';\nimport { CommonModule } from '@angular/common';\nimport {\n  Component,\n  ViewChild,\n  ElementRef,\n  AfterViewInit,\n  Input,\n  OnChanges,\n  SimpleChanges,\n} from '@angular/core';\nimport { merge } from 'lodash-es';\nimport { Chart } from '@bndynet/icharts/dist/types/scripts/core/chart';\n\n@Component({\n  selector: 'storybook-ichart',\n  standalone: true,\n  imports: [CommonModule],\n  template: `<div #container [ngStyle]=\"this.containerStyles\"></div>`,\n  styles: [\n    `\n      :host {\n        display: flex;\n        justify-content: center;\n      }\n    `,\n  ],\n})\nexport class ChartComponent implements AfterViewInit, OnChanges {\n  @ViewChild('container')\n  private containerRef!: ElementRef<HTMLDivElement>;\n\n  @Input()\n  options?: ChartOptions<any>;\n\n  @Input()\n  data?: any;\n\n  @Input()\n  type?: string;\n\n  @Input()\n  isDark?: boolean;\n\n  @Input()\n  size?: {\n    width?: number | string;\n    height?: number | string;\n  };\n\n  @Input()\n  styles?: object;\n\n  get width(): string {\n    return typeof this.size?.width === 'number'\n      ? this.size.width + 'px'\n      : this.size?.width || '100%';\n  }\n\n  get height(): string {\n    return typeof this.size?.height === 'number'\n      ? this.size.height + 'px'\n      : this.size?.height || '300px';\n  }\n\n  private _chart?: Chart;\n  private _viewInit?: boolean;\n\n  ngOnChanges(changes: SimpleChanges): void {\n    if (this._viewInit) {\n      this._render();\n    }\n  }\n\n  ngAfterViewInit(): void {\n    this._render();\n    this._viewInit = true;\n  }\n\n  private _render(): void {\n    console.log(`🚀 ~ ChartComponent ~ render ~ render: @input`);\n    console.log(this.type);\n    console.log(this.data);\n    console.log(this.options);\n    console.log(this.size);\n    console.log(this.isDark);\n    if (this._chart) {\n      this._chart.dispose();\n    }\n    this._chart = chart(\n      this.containerRef.nativeElement,\n      this.type as ChartType,\n      this.data,\n      merge({}, this.options, {\n        theme: this.isDark ? 'dark' : undefined,\n      })\n    );\n  }\n\n  get containerStyles() {\n    const result: any = {\n      width: this.width,\n      height: this.height,\n      ...this.styles,\n    };\n    if (this.isDark) {\n      result['background-image'] = 'url(https://static.bndy.net/images/bg.jpg)';\n    }\n    return result;\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
-            "stylesData": "",
+            "stylesData": "\n      :host {\n        display: flex;\n        justify-content: center;\n      }\n    \n",
             "extends": [],
             "implements": [
                 "AfterViewInit",
                 "OnChanges"
-            ]
+            ],
+            "accessors": {
+                "width": {
+                    "name": "width",
+                    "getSignature": {
+                        "name": "width",
+                        "type": "string",
+                        "returnType": "string",
+                        "line": 54
+                    }
+                },
+                "height": {
+                    "name": "height",
+                    "getSignature": {
+                        "name": "height",
+                        "type": "string",
+                        "returnType": "string",
+                        "line": 60
+                    }
+                },
+                "containerStyles": {
+                    "name": "containerStyles",
+                    "getSignature": {
+                        "name": "containerStyles",
+                        "type": "",
+                        "returnType": "",
+                        "line": 100
+                    }
+                }
+            }
         },
         {
-            "name": "HeaderComponent",
-            "id": "component-HeaderComponent-cad94b233ec8e80ceb541e7972c5f9737e08237b4e137112f3987ca48ee0cce5c0d57798d41daa5d4d24d6bdbb2df1606ab68cca2aa0a1785e38f99f3cac0729",
-            "file": "src/stories/header.component.ts",
+            "name": "DashboardComponent",
+            "id": "component-DashboardComponent-0d19ae527f007d823dfc9b00053dfec821492e7e09738793f7a6cea4f183677dd62c6cd703516c3f661f76c62fbab6e7a320de0d1775d08386f5939ae7152c9e",
+            "file": "src/stories/icharts/dashboard.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
             "providers": [],
-            "selector": "storybook-header",
-            "styleUrls": [
-                "./header.css"
+            "selector": "storybook-dashboard",
+            "styleUrls": [],
+            "styles": [
+                "\n      :host {\n        color: #efefef;\n        display: block;\n        height: 1000px;\n        padding: 1rem;\n        margin: 0rem;\n        background-color: #000000;\n        background-image: url(/d-bg.jpg);\n      }\n\n      ::ng-deep .chart {\n        box-sizing: border-box;\n        float: left;\n        height: 300px;\n        border-radius: 4px;\n        background-color: rgba(0, 0, 0, 0.2);\n        /* border: solid 1px #dedede; */\n        margin: 1rem;\n      }\n    "
             ],
-            "styles": [],
-            "template": "<header>    <div class=\"storybook-header\">\n      <div>\n        <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z\"\n              fill=\"#FFF\"\n            />\n            <path\n              d=\"M5.3 10.6l10.4 6v11.1l-10.4-6v-11zm11.4-6.2l9.7 5.5-9.7 5.6V4.4z\"\n              fill=\"#555AB9\"\n            />\n            <path\n              d=\"M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z\"\n              fill=\"#91BAF8\"\n            />\n          </g>\n        </svg>\n        <h1>Acme</h1>\n      </div>\n      <div>\n        <div *ngIf=\"user\">\n          <span class=\"welcome\">\n            Welcome, <b>{{ user.name }}</b\n            >!\n          </span>\n          <storybook-button\n            *ngIf=\"user\"\n            size=\"small\"\n            (onClick)=\"onLogout.emit($event)\"\n            label=\"Log out\"\n          ></storybook-button>\n        </div>\n        <div *ngIf=\"!user\">\n          <storybook-button\n            *ngIf=\"!user\"\n            size=\"small\"\n            class=\"margin-left\"\n            (onClick)=\"onLogin.emit($event)\"\n            label=\"Log in\"\n          ></storybook-button>\n          <storybook-button\n            *ngIf=\"!user\"\n            size=\"small\"\n            [primary]=\"true\"\n            class=\"margin-left\"\n            (onClick)=\"onCreateAccount.emit($event)\"\n            label=\"Sign up\"\n          ></storybook-button>\n        </div>\n      </div>\n    </div>\n  </header>",
-            "templateUrl": [],
-            "viewProviders": [],
-            "hostDirectives": [],
-            "inputsClass": [
-                {
-                    "name": "user",
-                    "defaultValue": "null",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 69,
-                    "type": "User | null",
-                    "decorators": []
-                }
-            ],
-            "outputsClass": [
-                {
-                    "name": "onCreateAccount",
-                    "defaultValue": "new EventEmitter<Event>()",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 78,
-                    "type": "EventEmitter"
-                },
-                {
-                    "name": "onLogin",
-                    "defaultValue": "new EventEmitter<Event>()",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 72,
-                    "type": "EventEmitter"
-                },
-                {
-                    "name": "onLogout",
-                    "defaultValue": "new EventEmitter<Event>()",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 75,
-                    "type": "EventEmitter"
-                }
-            ],
-            "propertiesClass": [],
-            "methodsClass": [],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "standalone": true,
-            "imports": [
-                {
-                    "name": "CommonModule",
-                    "type": "module"
-                },
-                {
-                    "name": "ButtonComponent",
-                    "type": "component"
-                }
-            ],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\nimport { ButtonComponent } from './button.component';\nimport type { User } from './user';\n\n@Component({\n  selector: 'storybook-header',\n  standalone: true,\n  imports: [CommonModule, ButtonComponent],\n  template: `<header>\n    <div class=\"storybook-header\">\n      <div>\n        <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z\"\n              fill=\"#FFF\"\n            />\n            <path\n              d=\"M5.3 10.6l10.4 6v11.1l-10.4-6v-11zm11.4-6.2l9.7 5.5-9.7 5.6V4.4z\"\n              fill=\"#555AB9\"\n            />\n            <path\n              d=\"M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z\"\n              fill=\"#91BAF8\"\n            />\n          </g>\n        </svg>\n        <h1>Acme</h1>\n      </div>\n      <div>\n        <div *ngIf=\"user\">\n          <span class=\"welcome\">\n            Welcome, <b>{{ user.name }}</b\n            >!\n          </span>\n          <storybook-button\n            *ngIf=\"user\"\n            size=\"small\"\n            (onClick)=\"onLogout.emit($event)\"\n            label=\"Log out\"\n          ></storybook-button>\n        </div>\n        <div *ngIf=\"!user\">\n          <storybook-button\n            *ngIf=\"!user\"\n            size=\"small\"\n            class=\"margin-left\"\n            (onClick)=\"onLogin.emit($event)\"\n            label=\"Log in\"\n          ></storybook-button>\n          <storybook-button\n            *ngIf=\"!user\"\n            size=\"small\"\n            [primary]=\"true\"\n            class=\"margin-left\"\n            (onClick)=\"onCreateAccount.emit($event)\"\n            label=\"Sign up\"\n          ></storybook-button>\n        </div>\n      </div>\n    </div>\n  </header>`,\n  styleUrls: ['./header.css'],\n})\nexport class HeaderComponent {\n  @Input()\n  user: User | null = null;\n\n  @Output()\n  onLogin = new EventEmitter<Event>();\n\n  @Output()\n  onLogout = new EventEmitter<Event>();\n\n  @Output()\n  onCreateAccount = new EventEmitter<Event>();\n}\n",
-            "assetsDirs": [],
-            "styleUrlsData": [
-                {
-                    "data": ".storybook-header {\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\n  padding: 15px 20px;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n\n.storybook-header svg {\n  display: inline-block;\n  vertical-align: top;\n}\n\n.storybook-header h1 {\n  font-weight: 700;\n  font-size: 20px;\n  line-height: 1;\n  margin: 6px 0 6px 10px;\n  display: inline-block;\n  vertical-align: top;\n}\n\n.storybook-header button + button {\n  margin-left: 10px;\n}\n\n.storybook-header .welcome {\n  color: #333;\n  font-size: 14px;\n  margin-right: 10px;\n}\n",
-                    "styleUrl": "./header.css"
-                }
-            ],
-            "stylesData": "",
-            "extends": []
-        },
-        {
-            "name": "PageComponent",
-            "id": "component-PageComponent-d32b0f19628254ea3fc5526c4d4564ada1cc83cf936759006d90a46f5874b02a3359e331bddda20b22e74a616a6443c660602ba74dd38ebe1160759e0de6f7ba",
-            "file": "src/stories/page.component.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "storybook-page",
-            "styleUrls": [
-                "./page.css"
-            ],
-            "styles": [],
-            "template": "<article>    <storybook-header\n      [user]=\"user\"\n      (onLogout)=\"doLogout()\"\n      (onLogin)=\"doLogin()\"\n      (onCreateAccount)=\"doCreateAccount()\"\n    ></storybook-header>\n    <section class=\"storybook-page\">\n      <h2>Pages in Storybook</h2>\n      <p>\n        We recommend building UIs with a\n        <a href=\"https://componentdriven.org\" target=\"_blank\" rel=\"noopener noreferrer\">\n          <strong>component-driven</strong>\n        </a>\n        process starting with atomic components and ending with pages.\n      </p>\n      <p>\n        Render pages with mock data. This makes it easy to build and review page states without\n        needing to navigate to them in your app. Here are some handy patterns for managing page data\n        in Storybook:\n      </p>\n      <ul>\n        <li>\n          Use a higher-level connected component. Storybook helps you compose such data from the\n          \"args\" of child component stories\n        </li>\n        <li>\n          Assemble data in the page component from your services. You can mock these services out\n          using Storybook.\n        </li>\n      </ul>\n      <p>\n        Get a guided tutorial on component-driven development at\n        <a href=\"https://storybook.js.org/tutorials/\" target=\"_blank\" rel=\"noopener noreferrer\">\n          Storybook tutorials\n        </a>\n        . Read more in the\n        <a href=\"https://storybook.js.org/docs\" target=\"_blank\" rel=\"noopener noreferrer\"> docs </a>\n        .\n      </p>\n      <div class=\"tip-wrapper\">\n        <span class=\"tip\">Tip</span> Adjust the width of the canvas with the\n        <svg width=\"10\" height=\"10\" viewBox=\"0 0 12 12\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M1.5 5.2h4.8c.3 0 .5.2.5.4v5.1c-.1.2-.3.3-.4.3H1.4a.5.5 0 01-.5-.4V5.7c0-.3.2-.5.5-.5zm0-2.1h6.9c.3 0 .5.2.5.4v7a.5.5 0 01-1 0V4H1.5a.5.5 0 010-1zm0-2.1h9c.3 0 .5.2.5.4v9.1a.5.5 0 01-1 0V2H1.5a.5.5 0 010-1zm4.3 5.2H2V10h3.8V6.2z\"\n              id=\"a\"\n              fill=\"#999\"\n            />\n          </g>\n        </svg>\n        Viewports addon in the toolbar\n      </div>\n    </section>\n  </article>",
+            "template": "",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
             "inputsClass": [],
             "outputsClass": [],
-            "propertiesClass": [
-                {
-                    "name": "user",
-                    "defaultValue": "null",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "User | null",
-                    "optional": false,
-                    "description": "",
-                    "line": 69
-                }
-            ],
+            "propertiesClass": [],
             "methodsClass": [
                 {
-                    "name": "doCreateAccount",
+                    "name": "ngOnInit",
                     "args": [],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 79,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                },
-                {
-                    "name": "doLogin",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 75,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                },
-                {
-                    "name": "doLogout",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 71,
+                    "line": 101,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -550,30 +314,45 @@
             "deprecationMessage": "",
             "hostBindings": [],
             "hostListeners": [],
-            "standalone": true,
-            "imports": [
-                {
-                    "name": "CommonModule",
-                    "type": "module"
-                },
-                {
-                    "name": "HeaderComponent",
-                    "type": "component"
-                }
-            ],
+            "standalone": false,
+            "imports": [],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\nimport { HeaderComponent } from './header.component';\nimport type { User } from './user';\n\n@Component({\n  selector: 'storybook-page',\n  standalone: true,\n  imports: [CommonModule, HeaderComponent],\n  template: `<article>\n    <storybook-header\n      [user]=\"user\"\n      (onLogout)=\"doLogout()\"\n      (onLogin)=\"doLogin()\"\n      (onCreateAccount)=\"doCreateAccount()\"\n    ></storybook-header>\n    <section class=\"storybook-page\">\n      <h2>Pages in Storybook</h2>\n      <p>\n        We recommend building UIs with a\n        <a href=\"https://componentdriven.org\" target=\"_blank\" rel=\"noopener noreferrer\">\n          <strong>component-driven</strong>\n        </a>\n        process starting with atomic components and ending with pages.\n      </p>\n      <p>\n        Render pages with mock data. This makes it easy to build and review page states without\n        needing to navigate to them in your app. Here are some handy patterns for managing page data\n        in Storybook:\n      </p>\n      <ul>\n        <li>\n          Use a higher-level connected component. Storybook helps you compose such data from the\n          \"args\" of child component stories\n        </li>\n        <li>\n          Assemble data in the page component from your services. You can mock these services out\n          using Storybook.\n        </li>\n      </ul>\n      <p>\n        Get a guided tutorial on component-driven development at\n        <a href=\"https://storybook.js.org/tutorials/\" target=\"_blank\" rel=\"noopener noreferrer\">\n          Storybook tutorials\n        </a>\n        . Read more in the\n        <a href=\"https://storybook.js.org/docs\" target=\"_blank\" rel=\"noopener noreferrer\"> docs </a>\n        .\n      </p>\n      <div class=\"tip-wrapper\">\n        <span class=\"tip\">Tip</span> Adjust the width of the canvas with the\n        <svg width=\"10\" height=\"10\" viewBox=\"0 0 12 12\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M1.5 5.2h4.8c.3 0 .5.2.5.4v5.1c-.1.2-.3.3-.4.3H1.4a.5.5 0 01-.5-.4V5.7c0-.3.2-.5.5-.5zm0-2.1h6.9c.3 0 .5.2.5.4v7a.5.5 0 01-1 0V4H1.5a.5.5 0 010-1zm0-2.1h9c.3 0 .5.2.5.4v9.1a.5.5 0 01-1 0V2H1.5a.5.5 0 010-1zm4.3 5.2H2V10h3.8V6.2z\"\n              id=\"a\"\n              fill=\"#999\"\n            />\n          </g>\n        </svg>\n        Viewports addon in the toolbar\n      </div>\n    </section>\n  </article>`,\n  styleUrls: ['./page.css'],\n})\nexport class PageComponent {\n  user: User | null = null;\n\n  doLogout() {\n    this.user = null;\n  }\n\n  doLogin() {\n    this.user = { name: 'Jane Doe' };\n  }\n\n  doCreateAccount() {\n    this.user = { name: 'Jane Doe' };\n  }\n}\n",
+            "sourceCode": "import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';\nimport {\n  chart,\n  ChartOptions,\n  ChartType,\n  PieChartOptions,\n  registerTheme,\n} from '@bndynet/icharts';\nimport { gPieData, pieData, pieDataLarge, pieDataSmall } from './pie.data';\nimport { DATA_XY_CHART, gXYData } from './xy.data';\nimport { merge } from 'lodash-es';\nimport { generate, generateMonths } from '@bndynet/dator';\n\nconst themeName = 'full-screen';\nregisterTheme(\n  themeName,\n  {\n    textColor: '#888888',\n    axisLineColor: '#888888',\n  },\n  true\n);\n\nconst options: ChartOptions<any> = {\n  // colors: ['#fff7ec', '#fee8c8', '#fdd49e', '#fdbb84', '#fc8d59', '#EE7B27'],\n  theme: themeName,\n};\n\nconst chartDefinitions = [\n  {\n    type: 'pie',\n    data: pieDataSmall,\n    width: '50%',\n  },\n  {\n    type: 'pie',\n    data: pieDataLarge,\n    width: '50%',\n    options: {\n      variant: 'donut',\n    },\n  },\n  {\n    type: 'pie',\n    data: pieDataSmall,\n    width: '50%',\n    options: {\n      variant: 'nightingale-rose',\n    },\n  },\n  {\n    type: 'pie',\n    data: pieDataSmall,\n    width: '50%',\n    options: {\n      variant: 'half-donut',\n      outerRadius: '50%',\n      legend: {\n        show: true,\n      },\n      label: { show: false },\n    } as PieChartOptions,\n  },\n  {\n    type: 'line',\n    data: DATA_XY_CHART,\n    width: '100%',\n  },\n];\n\n@Component({\n  selector: 'storybook-dashboard',\n  template: ``,\n  styles: [\n    `\n      :host {\n        color: #efefef;\n        display: block;\n        height: 1000px;\n        padding: 1rem;\n        margin: 0rem;\n        background-color: #000000;\n        background-image: url(/d-bg.jpg);\n      }\n\n      ::ng-deep .chart {\n        box-sizing: border-box;\n        float: left;\n        height: 300px;\n        border-radius: 4px;\n        background-color: rgba(0, 0, 0, 0.2);\n        /* border: solid 1px #dedede; */\n        margin: 1rem;\n      }\n    `,\n  ],\n})\nexport class DashboardComponent implements OnInit {\n  constructor(private root: ElementRef) {}\n\n  ngOnInit(): void {\n    chartDefinitions.forEach((cd) => {\n      const container = document.createElement('div');\n      container.classList.add('chart');\n      container.style.width = `calc(${cd.width || '50%'} - 2rem)`;\n      (this.root.nativeElement as HTMLElement).appendChild(container);\n\n      const chartInstance = chart(\n        container,\n        cd.type as ChartType,\n        cd.data,\n        merge({}, options, cd.options)\n      );\n      chartInstance.render();\n    });\n  }\n}\n",
             "assetsDirs": [],
-            "styleUrlsData": [
-                {
-                    "data": ".storybook-page {\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  font-size: 14px;\n  line-height: 24px;\n  padding: 48px 20px;\n  margin: 0 auto;\n  max-width: 600px;\n  color: #333;\n}\n\n.storybook-page h2 {\n  font-weight: 700;\n  font-size: 32px;\n  line-height: 1;\n  margin: 0 0 4px;\n  display: inline-block;\n  vertical-align: top;\n}\n\n.storybook-page p {\n  margin: 1em 0;\n}\n\n.storybook-page a {\n  text-decoration: none;\n  color: #1ea7fd;\n}\n\n.storybook-page ul {\n  padding-left: 30px;\n  margin: 1em 0;\n}\n\n.storybook-page li {\n  margin-bottom: 8px;\n}\n\n.storybook-page .tip {\n  display: inline-block;\n  border-radius: 1em;\n  font-size: 11px;\n  line-height: 12px;\n  font-weight: 700;\n  background: #e7fdd8;\n  color: #66bf3c;\n  padding: 4px 12px;\n  margin-right: 10px;\n  vertical-align: top;\n}\n\n.storybook-page .tip-wrapper {\n  font-size: 13px;\n  line-height: 20px;\n  margin-top: 40px;\n  margin-bottom: 40px;\n}\n\n.storybook-page .tip-wrapper svg {\n  display: inline-block;\n  height: 12px;\n  width: 12px;\n  margin-right: 4px;\n  vertical-align: top;\n  margin-top: 3px;\n}\n\n.storybook-page .tip-wrapper svg path {\n  fill: #1ea7fd;\n}\n",
-                    "styleUrl": "./page.css"
-                }
-            ],
-            "stylesData": "",
-            "extends": []
+            "styleUrlsData": "",
+            "stylesData": "\n      :host {\n        color: #efefef;\n        display: block;\n        height: 1000px;\n        padding: 1rem;\n        margin: 0rem;\n        background-color: #000000;\n        background-image: url(/d-bg.jpg);\n      }\n\n      ::ng-deep .chart {\n        box-sizing: border-box;\n        float: left;\n        height: 300px;\n        border-radius: 4px;\n        background-color: rgba(0, 0, 0, 0.2);\n        /* border: solid 1px #dedede; */\n        margin: 1rem;\n      }\n    \n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "root",
+                        "type": "ElementRef",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 98,
+                "jsdoctags": [
+                    {
+                        "name": "root",
+                        "type": "ElementRef",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "implements": [
+                "OnInit"
+            ]
         }
     ],
     "modules": [],
@@ -590,14 +369,74 @@
                 "defaultValue": "{\n  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes)]\n}"
             },
             {
-                "name": "countries",
+                "name": "chartDefinitions",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/icharts/pie.data.ts",
+                "file": "src/stories/icharts/dashboard.component.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "string[]",
-                "defaultValue": "generate(20, {\n  country: {\n    type: 'country',\n  },\n}).map((item: { country: string }) => item.country)"
+                "type": "[]",
+                "defaultValue": "[\n  {\n    type: 'pie',\n    data: pieDataSmall,\n    width: '50%',\n  },\n  {\n    type: 'pie',\n    data: pieDataLarge,\n    width: '50%',\n    options: {\n      variant: 'donut',\n    },\n  },\n  {\n    type: 'pie',\n    data: pieDataSmall,\n    width: '50%',\n    options: {\n      variant: 'nightingale-rose',\n    },\n  },\n  {\n    type: 'pie',\n    data: pieDataSmall,\n    width: '50%',\n    options: {\n      variant: 'half-donut',\n      outerRadius: '50%',\n      legend: {\n        show: true,\n      },\n      label: { show: false },\n    } as PieChartOptions,\n  },\n  {\n    type: 'line',\n    data: DATA_XY_CHART,\n    width: '100%',\n  },\n]"
+            },
+            {
+                "name": "DATA_XY_CHART",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/icharts/xy.data.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "gXYData(5, 12, false)"
+            },
+            {
+                "name": "DATA_XY_CHART_BY_SERIES",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/icharts/xy.data.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "gXYData(5, 12, true)"
+            },
+            {
+                "name": "DATA_XY_CHART_SMALL",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/icharts/xy.data.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "gXYData(5, 7, true)"
+            },
+            {
+                "name": "DATA_XY_CHART_SPARK",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/icharts/xy.data.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "gXYData(1, 12, undefined, () => ({ min: 10, max: 100 }))"
+            },
+            {
+                "name": "DATA_XY_CHART_TIME",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/icharts/xy.data.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "gXYData(5, 1000, true)"
+            },
+            {
+                "name": "DEFAULT_SERIES_NAME",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/icharts/data.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "string",
+                "defaultValue": "'中国'"
             },
             {
                 "name": "meta",
@@ -607,17 +446,27 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<ChartComponent>",
-                "defaultValue": "{\n  // title: 'Example/ICharts/XY',\n  component: ChartComponent,\n  // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs\n  tags: ['autodocs'],\n  argTypes: {\n    data: {\n      control: {\n        type: 'object',\n      },\n    },\n  },\n}"
+                "defaultValue": "{\n  title: 'My Stories/icharts/',\n  component: ChartComponent,\n  // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs\n  tags: ['autodocs'],\n  argTypes: {\n    data: {\n      control: {\n        type: 'object',\n      },\n    },\n    isDark: {\n      control: {\n        type: 'boolean',\n      },\n      defaultValue: false,\n    },\n  },\n}"
             },
             {
-                "name": "months",
+                "name": "MONTHS",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/icharts/xy.data.ts",
+                "file": "src/stories/icharts/data.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "",
+                "type": "string[]",
                 "defaultValue": "generateMonths(true)"
+            },
+            {
+                "name": "options",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/icharts/dashboard.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "ChartOptions<any>",
+                "defaultValue": "{\n  // colors: ['#fff7ec', '#fee8c8', '#fdd49e', '#fdbb84', '#fc8d59', '#EE7B27'],\n  theme: themeName,\n}"
             },
             {
                 "name": "pieData",
@@ -627,7 +476,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "gD(8)"
+                "defaultValue": "gPieData(8)"
             },
             {
                 "name": "pieDataLarge",
@@ -637,7 +486,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "gD(20)"
+                "defaultValue": "gPieData(20)"
             },
             {
                 "name": "pieDataSmall",
@@ -647,10 +496,74 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "gD(5)"
+                "defaultValue": "gPieData(5)"
+            },
+            {
+                "name": "SERIES_NAMES",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/icharts/data.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "string[]",
+                "defaultValue": "generate(5, { city: { type: 'country' } }).map(\n  (item: any) => item.city\n)"
+            },
+            {
+                "name": "themeName",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/icharts/dashboard.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "string",
+                "defaultValue": "'full-screen'"
             }
         ],
         "functions": [
+            {
+                "name": "cloneStory",
+                "file": "src/stories/icharts/utils.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "args": [
+                    {
+                        "name": "story",
+                        "type": "StoryObj",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "args",
+                        "type": "StoryInputs",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "returnType": "StoryObj<ChartComponent>",
+                "jsdoctags": [
+                    {
+                        "name": "story",
+                        "type": "StoryObj",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "args",
+                        "type": "StoryInputs",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
             {
                 "name": "createStory",
                 "file": "src/stories/icharts/utils.ts",
@@ -661,8 +574,8 @@
                 "description": "",
                 "args": [
                     {
-                        "name": "story",
-                        "type": "ChartStory",
+                        "name": "args",
+                        "type": "StoryInputs",
                         "deprecated": false,
                         "deprecationMessage": ""
                     }
@@ -670,8 +583,8 @@
                 "returnType": "StoryObj<ChartComponent>",
                 "jsdoctags": [
                     {
-                        "name": "story",
-                        "type": "ChartStory",
+                        "name": "args",
+                        "type": "StoryInputs",
                         "deprecated": false,
                         "deprecationMessage": "",
                         "tagName": {
@@ -681,82 +594,7 @@
                 ]
             },
             {
-                "name": "g",
-                "file": "src/stories/icharts/xy.data.ts",
-                "ctype": "miscellaneous",
-                "subtype": "function",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "description": "",
-                "args": [
-                    {
-                        "name": "seriesCount",
-                        "type": "number",
-                        "deprecated": false,
-                        "deprecationMessage": ""
-                    },
-                    {
-                        "name": "dataCount",
-                        "type": "number",
-                        "deprecated": false,
-                        "deprecationMessage": ""
-                    },
-                    {
-                        "name": "increaseBySeries",
-                        "type": "boolean",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "optional": true
-                    },
-                    {
-                        "name": "args",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "optional": true
-                    }
-                ],
-                "jsdoctags": [
-                    {
-                        "name": "seriesCount",
-                        "type": "number",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    },
-                    {
-                        "name": "dataCount",
-                        "type": "number",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    },
-                    {
-                        "name": "increaseBySeries",
-                        "type": "boolean",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "optional": true,
-                        "tagName": {
-                            "text": "param"
-                        }
-                    },
-                    {
-                        "name": "args",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "optional": true,
-                        "tagName": {
-                            "text": "param"
-                        }
-                    }
-                ]
-            },
-            {
-                "name": "gD",
+                "name": "gPieData",
                 "file": "src/stories/icharts/pie.data.ts",
                 "ctype": "miscellaneous",
                 "subtype": "function",
@@ -783,11 +621,86 @@
                         }
                     }
                 ]
+            },
+            {
+                "name": "gXYData",
+                "file": "src/stories/icharts/xy.data.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "args": [
+                    {
+                        "name": "seriesCount",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "dataCount",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "increaseBySeries",
+                        "type": "boolean",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "optional": true
+                    },
+                    {
+                        "name": "args",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "optional": true
+                    }
+                ],
+                "jsdoctags": [
+                    {
+                        "name": "seriesCount",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "dataCount",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "increaseBySeries",
+                        "type": "boolean",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "optional": true,
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "args",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "optional": true,
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
             }
         ],
         "typealiases": [
             {
-                "name": "ChartStory",
+                "name": "StoryInputs",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
                 "rawtype": "literal type",
@@ -812,46 +725,120 @@
                     "defaultValue": "{\n  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes)]\n}"
                 }
             ],
-            "src/stories/icharts/pie.data.ts": [
+            "src/stories/icharts/dashboard.component.ts": [
                 {
-                    "name": "countries",
+                    "name": "chartDefinitions",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/stories/icharts/pie.data.ts",
+                    "file": "src/stories/icharts/dashboard.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "defaultValue": "[\n  {\n    type: 'pie',\n    data: pieDataSmall,\n    width: '50%',\n  },\n  {\n    type: 'pie',\n    data: pieDataLarge,\n    width: '50%',\n    options: {\n      variant: 'donut',\n    },\n  },\n  {\n    type: 'pie',\n    data: pieDataSmall,\n    width: '50%',\n    options: {\n      variant: 'nightingale-rose',\n    },\n  },\n  {\n    type: 'pie',\n    data: pieDataSmall,\n    width: '50%',\n    options: {\n      variant: 'half-donut',\n      outerRadius: '50%',\n      legend: {\n        show: true,\n      },\n      label: { show: false },\n    } as PieChartOptions,\n  },\n  {\n    type: 'line',\n    data: DATA_XY_CHART,\n    width: '100%',\n  },\n]"
+                },
+                {
+                    "name": "options",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/icharts/dashboard.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ChartOptions<any>",
+                    "defaultValue": "{\n  // colors: ['#fff7ec', '#fee8c8', '#fdd49e', '#fdbb84', '#fc8d59', '#EE7B27'],\n  theme: themeName,\n}"
+                },
+                {
+                    "name": "themeName",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/icharts/dashboard.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "defaultValue": "'full-screen'"
+                }
+            ],
+            "src/stories/icharts/xy.data.ts": [
+                {
+                    "name": "DATA_XY_CHART",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/icharts/xy.data.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "gXYData(5, 12, false)"
+                },
+                {
+                    "name": "DATA_XY_CHART_BY_SERIES",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/icharts/xy.data.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "gXYData(5, 12, true)"
+                },
+                {
+                    "name": "DATA_XY_CHART_SMALL",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/icharts/xy.data.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "gXYData(5, 7, true)"
+                },
+                {
+                    "name": "DATA_XY_CHART_SPARK",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/icharts/xy.data.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "gXYData(1, 12, undefined, () => ({ min: 10, max: 100 }))"
+                },
+                {
+                    "name": "DATA_XY_CHART_TIME",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/icharts/xy.data.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "gXYData(5, 1000, true)"
+                }
+            ],
+            "src/stories/icharts/data.ts": [
+                {
+                    "name": "DEFAULT_SERIES_NAME",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/icharts/data.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "defaultValue": "'中国'"
+                },
+                {
+                    "name": "MONTHS",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/icharts/data.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string[]",
-                    "defaultValue": "generate(20, {\n  country: {\n    type: 'country',\n  },\n}).map((item: { country: string }) => item.country)"
+                    "defaultValue": "generateMonths(true)"
                 },
                 {
-                    "name": "pieData",
+                    "name": "SERIES_NAMES",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/stories/icharts/pie.data.ts",
+                    "file": "src/stories/icharts/data.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "gD(8)"
-                },
-                {
-                    "name": "pieDataLarge",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/icharts/pie.data.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "gD(20)"
-                },
-                {
-                    "name": "pieDataSmall",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/icharts/pie.data.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "gD(5)"
+                    "type": "string[]",
+                    "defaultValue": "generate(5, { city: { type: 'country' } }).map(\n  (item: any) => item.city\n)"
                 }
             ],
             "src/stories/icharts/utils.ts": [
@@ -863,24 +850,88 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<ChartComponent>",
-                    "defaultValue": "{\n  // title: 'Example/ICharts/XY',\n  component: ChartComponent,\n  // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs\n  tags: ['autodocs'],\n  argTypes: {\n    data: {\n      control: {\n        type: 'object',\n      },\n    },\n  },\n}"
+                    "defaultValue": "{\n  title: 'My Stories/icharts/',\n  component: ChartComponent,\n  // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs\n  tags: ['autodocs'],\n  argTypes: {\n    data: {\n      control: {\n        type: 'object',\n      },\n    },\n    isDark: {\n      control: {\n        type: 'boolean',\n      },\n      defaultValue: false,\n    },\n  },\n}"
                 }
             ],
-            "src/stories/icharts/xy.data.ts": [
+            "src/stories/icharts/pie.data.ts": [
                 {
-                    "name": "months",
+                    "name": "pieData",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/stories/icharts/xy.data.ts",
+                    "file": "src/stories/icharts/pie.data.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "generateMonths(true)"
+                    "defaultValue": "gPieData(8)"
+                },
+                {
+                    "name": "pieDataLarge",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/icharts/pie.data.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "gPieData(20)"
+                },
+                {
+                    "name": "pieDataSmall",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/icharts/pie.data.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "gPieData(5)"
                 }
             ]
         },
         "groupedFunctions": {
             "src/stories/icharts/utils.ts": [
+                {
+                    "name": "cloneStory",
+                    "file": "src/stories/icharts/utils.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "args": [
+                        {
+                            "name": "story",
+                            "type": "StoryObj",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "args",
+                            "type": "StoryInputs",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "returnType": "StoryObj<ChartComponent>",
+                    "jsdoctags": [
+                        {
+                            "name": "story",
+                            "type": "StoryObj",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "args",
+                            "type": "StoryInputs",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
                 {
                     "name": "createStory",
                     "file": "src/stories/icharts/utils.ts",
@@ -891,8 +942,8 @@
                     "description": "",
                     "args": [
                         {
-                            "name": "story",
-                            "type": "ChartStory",
+                            "name": "args",
+                            "type": "StoryInputs",
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -900,87 +951,10 @@
                     "returnType": "StoryObj<ChartComponent>",
                     "jsdoctags": [
                         {
-                            "name": "story",
-                            "type": "ChartStory",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                }
-            ],
-            "src/stories/icharts/xy.data.ts": [
-                {
-                    "name": "g",
-                    "file": "src/stories/icharts/xy.data.ts",
-                    "ctype": "miscellaneous",
-                    "subtype": "function",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "args": [
-                        {
-                            "name": "seriesCount",
-                            "type": "number",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        },
-                        {
-                            "name": "dataCount",
-                            "type": "number",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        },
-                        {
-                            "name": "increaseBySeries",
-                            "type": "boolean",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "optional": true
-                        },
-                        {
                             "name": "args",
+                            "type": "StoryInputs",
                             "deprecated": false,
                             "deprecationMessage": "",
-                            "optional": true
-                        }
-                    ],
-                    "jsdoctags": [
-                        {
-                            "name": "seriesCount",
-                            "type": "number",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        },
-                        {
-                            "name": "dataCount",
-                            "type": "number",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        },
-                        {
-                            "name": "increaseBySeries",
-                            "type": "boolean",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "optional": true,
-                            "tagName": {
-                                "text": "param"
-                            }
-                        },
-                        {
-                            "name": "args",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "optional": true,
                             "tagName": {
                                 "text": "param"
                             }
@@ -990,7 +964,7 @@
             ],
             "src/stories/icharts/pie.data.ts": [
                 {
-                    "name": "gD",
+                    "name": "gPieData",
                     "file": "src/stories/icharts/pie.data.ts",
                     "ctype": "miscellaneous",
                     "subtype": "function",
@@ -1018,13 +992,90 @@
                         }
                     ]
                 }
+            ],
+            "src/stories/icharts/xy.data.ts": [
+                {
+                    "name": "gXYData",
+                    "file": "src/stories/icharts/xy.data.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "args": [
+                        {
+                            "name": "seriesCount",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "dataCount",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "increaseBySeries",
+                            "type": "boolean",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true
+                        },
+                        {
+                            "name": "args",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true
+                        }
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "seriesCount",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "dataCount",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "increaseBySeries",
+                            "type": "boolean",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true,
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "args",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true,
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
             ]
         },
         "groupedEnumerations": {},
         "groupedTypeAliases": {
             "src/stories/icharts/utils.ts": [
                 {
-                    "name": "ChartStory",
+                    "name": "StoryInputs",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
                     "rawtype": "literal type",
@@ -1039,7 +1090,7 @@
     },
     "routes": [],
     "coverage": {
-        "count": 5,
+        "count": 0,
         "status": "low",
         "files": [
             {
@@ -1062,30 +1113,81 @@
                 "status": "low"
             },
             {
-                "filePath": "src/stories/button.component.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "ButtonComponent",
-                "coveragePercent": 83,
-                "coverageCount": "5/6",
-                "status": "very-good"
-            },
-            {
-                "filePath": "src/stories/header.component.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "HeaderComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/5",
-                "status": "low"
-            },
-            {
                 "filePath": "src/stories/icharts/chart.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "ChartComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/12",
+                "coverageCount": "0/13",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/icharts/dashboard.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "DashboardComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/icharts/dashboard.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "chartDefinitions",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/icharts/dashboard.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "options",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/icharts/dashboard.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "themeName",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/icharts/data.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "DEFAULT_SERIES_NAME",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/icharts/data.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "MONTHS",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/icharts/data.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "SERIES_NAMES",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {
@@ -1093,17 +1195,7 @@
                 "type": "function",
                 "linktype": "miscellaneous",
                 "linksubtype": "function",
-                "name": "gD",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/stories/icharts/pie.data.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "countries",
+                "name": "gPieData",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
@@ -1143,6 +1235,16 @@
                 "type": "function",
                 "linktype": "miscellaneous",
                 "linksubtype": "function",
+                "name": "cloneStory",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/icharts/utils.ts",
+                "type": "function",
+                "linktype": "miscellaneous",
+                "linksubtype": "function",
                 "name": "createStory",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
@@ -1163,7 +1265,7 @@
                 "type": "function",
                 "linktype": "miscellaneous",
                 "linksubtype": "function",
-                "name": "g",
+                "name": "gXYData",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
@@ -1173,27 +1275,49 @@
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
-                "name": "months",
+                "name": "DATA_XY_CHART",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
             },
             {
-                "filePath": "src/stories/page.component.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "PageComponent",
+                "filePath": "src/stories/icharts/xy.data.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "DATA_XY_CHART_BY_SERIES",
                 "coveragePercent": 0,
-                "coverageCount": "0/5",
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {
-                "filePath": "src/stories/user.ts",
-                "type": "interface",
-                "linktype": "interface",
-                "name": "User",
+                "filePath": "src/stories/icharts/xy.data.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "DATA_XY_CHART_SMALL",
                 "coveragePercent": 0,
-                "coverageCount": "0/2",
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/icharts/xy.data.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "DATA_XY_CHART_SPARK",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/icharts/xy.data.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "DATA_XY_CHART_TIME",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             }
         ]

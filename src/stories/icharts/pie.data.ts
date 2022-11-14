@@ -1,14 +1,9 @@
 import { generate } from '@bndynet/dator';
+import { SERIES_NAMES } from './data';
 
-const countries: string[] = generate(20, {
-  country: {
-    type: 'country',
-  },
-}).map((item: { country: string }) => item.country);
-
-function gD(count: number): any {
+export function gPieData(count: number): any {
   const result: any = {};
-  countries.slice(0, count).forEach((c: string) => {
+  SERIES_NAMES.slice(0, count).forEach((c: string) => {
     result[c] = generate(1, {
       value: {
         type: 'number',
@@ -22,6 +17,6 @@ function gD(count: number): any {
   return result;
 }
 
-export const pieData = gD(8);
-export const pieDataSmall = gD(5);
-export const pieDataLarge = gD(20);
+export const pieData = gPieData(8);
+export const pieDataSmall = gPieData(5);
+export const pieDataLarge = gPieData(20);

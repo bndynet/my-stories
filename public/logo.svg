@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="260" height="70" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 70"
+  preserveAspectRatio="xMidYMid meet">
+  <style>
+    .name {
+      font-family: "Nunito Sans",-apple-system,".SFNSText-Regular","San Francisco",BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
+      font-size: 30px;
+      font-weight: bold;
+      fill: #333;
+    }
+  </style>
+  <g>
+    <title>frontgroud</title>
+    <rect x="10" y="20" height="10" width="30" fill="#DF2025" />
+    <rect x="50" y="20" height="30" width="10" fill="#4BB847" />
+    <rect x="30" y="40" height="10" width="30" fill="#4BB847" />
+    <rect x="10" y="40" height="10" width="10" fill="#347DC2" />
+  </g>
+  <text x="70" y="45" class="name">BNDY.NET</text>
+</svg>

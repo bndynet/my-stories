@@ -1,24 +1,42 @@
 import { ChartOptions, ChartData } from '@bndynet/icharts';
 import { Meta, StoryObj } from '@storybook/angular';
 import { ChartComponent } from './chart.component';
+import { merge } from 'lodash-es';
 
-export type ChartStory<TOptions = ChartOptions<ChartData>> = {
+export type StoryInputs<TData, TOptions> = {
+  data?: TData;
   options?: TOptions;
-  data: any;
+  size?: { width?: number | string; height?: number | string };
   isDark?: boolean;
-  size?: { width?: string | number; height: string | number };
+  styles?: object;
+
+  chart?: object;
+  viewInit?: boolean;
 };
 
-export function createStory<TChartOptions>(
-  story: ChartStory<TChartOptions>
-): StoryObj<ChartComponent> {
+export function createStory<
+  TData extends ChartData,
+  TOptions extends ChartOptions<TData>,
+>(args: StoryInputs<TData, TOptions>): StoryObj<ChartComponent> {
   return {
-    args: story,
-  } as StoryObj<ChartComponent>;
+    args,
+  };
+}
+
+export function cloneStory<
+  TData extends ChartData,
+  TOptions extends ChartOptions<TData>,
+>(
+  story: StoryObj<ChartComponent>,
+  args: StoryInputs<TData, TOptions>
+): StoryObj<ChartComponent> {
+  return merge({}, story, {
+    args,
+  });
 }
 
 export const meta: Meta<ChartComponent> = {
-  // title: 'Example/ICharts/XY',
+  title: 'My Stories/icharts/',
   component: ChartComponent,
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ['autodocs'],
@@ -27,6 +45,12 @@ export const meta: Meta<ChartComponent> = {
       control: {
         type: 'object',
       },
+    },
+    isDark: {
+      control: {
+        type: 'boolean',
+      },
+      defaultValue: false,
     },
   },
 };

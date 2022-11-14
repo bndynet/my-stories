@@ -16,11 +16,15 @@ import { Chart } from '@bndynet/icharts/dist/types/scripts/core/chart';
   selector: 'storybook-ichart',
   standalone: true,
   imports: [CommonModule],
-  template: `<div
-    #container
-    [style.width]="this.size?.width || '100%'"
-    [style.height]="this.size?.height || '300px'"
-  ></div>`,
+  template: `<div #container [ngStyle]="this.containerStyles"></div>`,
+  styles: [
+    `
+      :host {
+        display: flex;
+        justify-content: center;
+      }
+    `,
+  ],
 })
 export class ChartComponent implements AfterViewInit, OnChanges {
   @ViewChild('container')
@@ -30,7 +34,7 @@ export class ChartComponent implements AfterViewInit, OnChanges {
   options?: ChartOptions<any>;
 
   @Input()
-  data?: object;
+  data?: any;
 
   @Input()
   type?: string;
@@ -39,38 +43,69 @@ export class ChartComponent implements AfterViewInit, OnChanges {
   isDark?: boolean;
 
   @Input()
-  size?: { width?: number | string; height?: number | string };
+  size?: {
+    width?: number | string;
+    height?: number | string;
+  };
 
-  private chart?: Chart;
-  private viewInit?: boolean;
+  @Input()
+  styles?: object;
+
+  get width(): string {
+    return typeof this.size?.width === 'number'
+      ? this.size.width + 'px'
+      : this.size?.width || '100%';
+  }
+
+  get height(): string {
+    return typeof this.size?.height === 'number'
+      ? this.size.height + 'px'
+      : this.size?.height || '300px';
+  }
+
+  private _chart?: Chart;
+  private _viewInit?: boolean;
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (this.viewInit) {
-      this.render();
+    if (this._viewInit) {
+      this._render();
     }
   }
 
   ngAfterViewInit(): void {
-    this.render();
-    this.viewInit = true;
+    this._render();
+    this._viewInit = true;
   }
 
-  private render(): void {
-    console.log(`🚀 ~ IChartsPieComponent ~ render ~ render: @input`, this.type, this.data, this.options);
-    if (this.chart) {
-      this.chart.dispose();
+  private _render(): void {
+    console.log(`🚀 ~ ChartComponent ~ render ~ render: @input`);
+    console.log(this.type);
+    console.log(this.data);
+    console.log(this.options);
+    console.log(this.size);
+    console.log(this.isDark);
+    if (this._chart) {
+      this._chart.dispose();
     }
-
-    this.chart = chart(
+    this._chart = chart(
       this.containerRef.nativeElement,
       this.type as ChartType,
       this.data,
-      merge(
-        this.options,
-        {
-          theme: this.isDark ? 'dark' : undefined,
-        },
-      )
+      merge({}, this.options, {
+        theme: this.isDark ? 'dark' : undefined,
+      })
     );
+  }
+
+  get containerStyles() {
+    const result: any = {
+      width: this.width,
+      height: this.height,
+      ...this.styles,
+    };
+    if (this.isDark) {
+      result['background-image'] = 'url(https://static.bndy.net/images/bg.jpg)';
+    }
+    return result;
   }
 }
