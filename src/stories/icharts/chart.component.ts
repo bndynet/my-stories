@@ -8,6 +8,8 @@ import {
   Input,
   OnChanges,
   SimpleChanges,
+  Output,
+  EventEmitter,
 } from '@angular/core';
 import { merge } from 'lodash-es';
 import { Chart } from '@bndynet/icharts/dist/types/scripts/core/chart';
@@ -50,6 +52,9 @@ export class ChartComponent implements AfterViewInit, OnChanges {
 
   @Input()
   styles?: object;
+
+  @Output()
+  rendered = new EventEmitter<Chart>();
 
   get width(): string {
     return typeof this.size?.width === 'number'
@@ -95,6 +100,7 @@ export class ChartComponent implements AfterViewInit, OnChanges {
         theme: this.isDark ? 'dark' : undefined,
       })
     );
+    this.rendered.emit(this._chart);
   }
 
   get containerStyles() {

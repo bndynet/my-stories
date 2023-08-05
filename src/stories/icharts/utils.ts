@@ -1,4 +1,4 @@
-import { ChartOptions, ChartData } from '@bndynet/icharts';
+import { ChartOptions, ChartData, Chart } from '@bndynet/icharts';
 import { Meta, StoryObj } from '@storybook/angular';
 import { ChartComponent } from './chart.component';
 import { merge } from 'lodash-es';
@@ -12,6 +12,7 @@ export type StoryInputs<TData, TOptions> = {
 
   chart?: object;
   viewInit?: boolean;
+  rendered?: (chart: Chart) => void;
 };
 
 export function createStory<
@@ -51,6 +52,9 @@ export const meta: Meta<ChartComponent> = {
         type: 'boolean',
       },
       defaultValue: false,
+    },
+    rendered: {
+      action: 'rendered',
     },
   },
 };
